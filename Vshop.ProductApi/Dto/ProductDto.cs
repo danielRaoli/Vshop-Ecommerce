@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Vshop.ProductApi.Models;
 
 namespace Vshop.ProductApi.Dto;
@@ -15,14 +16,17 @@ public class ProductDto
     public decimal Price { get; set; }
 
     [Required(ErrorMessage = "This description is required")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [Required(ErrorMessage =" this value stock is required")]
     [Range(1,9999)]
     public long Stock { get; set; }
 
-    public string ImageUrl { get; set; }
+    public string? ImageUrl { get; set; }
 
+    
+    public string? CategoryName { get; set; }
     public int CategoryId { get; set; }
-    public Category Category { get; set; }
+    [JsonIgnore]
+    public Category? Category { get; set; }
 }

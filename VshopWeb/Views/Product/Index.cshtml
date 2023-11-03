@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProductViewModel>;
+
+<h1 class="text-center mb-2">Products</h1>
+<a class="btn btn-primary mb-3" asp-action="Create" asp-controller="Product">Add new Product</a>
+<table class="table shadow-sm rounded-1">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Stock
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>
+                    @product.Name;
+                </td>
+                <td>
+                    @product.Description
+                </td>
+                <td>
+                    @product.Stock;
+                </td>
+                <td>
+                    @product.Price;
+                </td>
+                <td>
+                    @product.CategoryName
+                </td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <a asp-controller="Product" asp-route-id="@product.Id" asp-action="DeleteProduct" class="btn btn-danger">
+                            <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+                        </a>
+                        <a asp-controller="Product" asp-route-id="@product.Id" asp-action="UpdateProduct" class="btn btn-warning">
+                            <i class="fa-solid fa-pen" style="color: #000000;"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

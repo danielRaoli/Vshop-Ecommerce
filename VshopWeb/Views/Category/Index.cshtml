@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CategoryViewModel>
+
+<h1 class="text-center mb-2">Categories</h1>
+<a class="btn btn-primary mb-3" asp-action="Create" asp-controller="Category">Add new Category</a>
+<table class="table shadow-sm rounded-1">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @category.Name;
+                </td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <a asp-controller="Category" asp-route-id="@category.Id" asp-action="Delet" class="btn btn-danger">
+                            <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+                        </a>
+                        <a asp-controller="Category" asp-route-id="@category.Id" asp-action="Edit" class="btn btn-warning">
+                            <i class="fa-solid fa-pen" style="color: #000000;"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -20,12 +20,12 @@ public class ProdutoRepository : IProductRepository
 
     public async Task<Product> GetById(int id)
     {
-         return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+        return await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<List<Product>> GetProducts()
     {
-        return await _context.Products.ToListAsync();
+        return await _context.Products.Include(p => p.Category).ToListAsync();
     }
 
     public async Task<Product> Remove(int id)

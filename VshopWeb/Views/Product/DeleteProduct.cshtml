@@ -1,0 +1,39 @@
+﻿@model ProductViewModel
+
+<h1>Are you shure you want delete this product ? </h1>
+
+<div class="container container-fluid">
+    <div class="row">
+        <span>Name: </span>
+        <p>
+            @Model.Name
+        </p>
+    </div>
+        <div class="row">
+        <span>Price: </span>
+        <p>
+            @Model.Price
+        </p>
+    </div>
+    <div class="row">
+        <span>Description: </span>
+        <p>
+            @Model.Description
+        </p>
+    </div>
+    <div class="row">
+        <span>Category: </span>
+        <p>
+            @Model.CategoryName
+        </p>
+    </div>
+    <div class="row gap-2">
+        <a asp-action="Index" asp-controller="Product" >Back to Products</a>
+        <form asp-action="DeleteProduct" method="post">
+            <input type="submit" class="btn btn-danger" value="confirm delete" />
+        </form>
+   
+    </div>
+</div>
+
+

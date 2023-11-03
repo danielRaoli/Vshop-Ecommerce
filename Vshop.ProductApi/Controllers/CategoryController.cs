@@ -59,7 +59,7 @@ namespace Vshop.ProductApi.Controllers
                 return BadRequest("the category model is wrong");
             }
             await _service.Create(categoryDto);
-            return Ok(categoryDto);
+            return CreatedAtAction("Create",categoryDto);
         }
 
         

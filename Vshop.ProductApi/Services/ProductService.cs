@@ -15,11 +15,13 @@ namespace Vshop.ProductApi.Services
             _productRepository = productRepository;
             _mapper = mapper;
         }
-        
+
         public async Task Create(ProductDto productDto)
         {
-            var product = _mapper.Map<Product>(productDto);
-            await _productRepository.Create(product);
+           var productEntity = _mapper.Map<Product>(productDto);
+            await _productRepository.Create(productEntity);
+            productDto.Id = productEntity.Id;
+
         }
 
         public async Task<ProductDto> GetById(int id)
